@@ -1,0 +1,49 @@
+{
+	"name": "TED",
+	"version": "0.0.1",
+	"manifest_version": 2,
+	"description": "The transpilation tool to rule them all",
+	"background": {
+		"scripts": [
+			"background.js"			
+		],
+		"persistent": true
+	},
+	"content_scripts": [
+		{
+			"run_at": "document_end",
+			"matches": ["*://*/*"],
+			"all_frames": true,
+
+			"js": [
+				"engine/transpilers/handler.js",
+
+				"engine/transpilers/esprima.js",
+				"engine/transpilers/babel.min.js",
+				"engine/transpilers/coffee-script.js",
+				"engine/transpilers/typescript.js",
+				
+				"engine/transpilers/jade.js",
+				"engine/transpilers/marked.js",
+				"engine/transpilers/ejs.min.js",
+				"engine/transpilers/mustache.js",
+				"engine/transpilers/underscore-min.js", "engine/transpilers/underscore.string.min.js", "engine/transpilers/haml.js",
+
+				"engine/transpilers/less.min.js",
+				"engine/transpilers/sass.js", "engine/transpilers/sass.worker.js",
+				"engine/transpilers/stylus.min.js",
+
+				"engine/e.js",
+				"engine/TED.js"
+			]
+		}
+	],
+
+	"permissions": [
+		"https://*/*",
+		"http://*/*",
+		"tabs",
+		"contentSettings"
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
